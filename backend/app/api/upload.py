@@ -19,10 +19,12 @@ async def upload_document(file: UploadFile = File(...)):
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    chunks = document_service.process_document(file_path)
+    result = document_service.process_document(file_path)
+    chunks = result["chunks"]
+    embeddings = result["embeddings"]
     return {
     "filename": file.filename,
     "chunks_created": len(chunks),
-    "first_chunk": chunks[0],
-    "last_chunk": chunks[-1]
+    "embedding_dimension": len(embeddings[0]) if embeddings is not None and len(embeddings) > 0 else 0,
+    "first_chunk": chunks[0] if chunks else ""
 }
