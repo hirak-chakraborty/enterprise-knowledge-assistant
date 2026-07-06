@@ -1,13 +1,15 @@
 from fastapi import APIRouter, File, UploadFile
 import os
 import shutil
-from backend.app.utils.pdf_parser import extract_text_from_pdf
+
+from backend.app.services.document_service import DocumentService
 
 router = APIRouter()
 
 UPLOAD_FOLDER = "backend/uploads"
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+document_service = DocumentService()
 
 
 @router.post("/upload")
@@ -17,11 +19,10 @@ async def upload_document(file: UploadFile = File(...)):
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    text = extract_text_from_pdf(file_path)
-
+    chunks = document_service.process_document(file_path)
     return {
-        "filename": file.filename,
-        "message": "File uploaded successfully",
-        "characters_extracted": len(text),
-        "preview": text[:500]
-    }
+    "filename": file.filename,
+    "chunks_created": len(chunks),
+    "first_chunk": chunks[0],
+    "last_chunk": chunks[-1]
+}
