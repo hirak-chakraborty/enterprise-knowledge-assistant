@@ -1,5 +1,4 @@
 import os
-
 import chromadb
 
 
@@ -17,6 +16,11 @@ class VectorStoreService:
 
     def store(self, document_name: str, chunks, embeddings):
 
+        print("\n========== VECTOR STORE ==========")
+        print(f"Document : {document_name}")
+        print(f"Chunks   : {len(chunks)}")
+        print(f"Vectors  : {len(embeddings)}")
+
         # Generate a clean document ID
         document_id = (
             os.path.splitext(document_name)[0]
@@ -30,6 +34,7 @@ class VectorStoreService:
         )
 
         if existing["ids"]:
+            print(f"Deleting {len(existing['ids'])} existing chunks...")
             self.collection.delete(ids=existing["ids"])
 
         # Create readable chunk IDs
@@ -51,3 +56,27 @@ class VectorStoreService:
                 for i in range(len(chunks))
             ]
         )
+
+        print("Vectors stored successfully!")
+
+        count = self.collection.count()
+        print(f"Collection contains {count} vectors.")
+        print("==================================\n")
+
+    def search(self, embedding, top_k=5):
+
+        print("\n========== SEARCH ==========")
+
+        count = self.collection.count()
+        print(f"Vectors in collection : {count}")
+
+        results = self.collection.query(
+            query_embeddings=[embedding.tolist()],
+            n_results=top_k,
+            include=["documents", "metadatas", "distances"]
+        )
+
+        print("Search completed.")
+        print("============================\n")
+
+        return results
