@@ -1,13 +1,18 @@
 from fastapi import APIRouter
+from pydantic import BaseModel
 
-from backend.app.services.retrieval_service import RetrievalService
+from backend.app.services.chat_service import ChatService
 
 router = APIRouter()
 
-retrieval_service = RetrievalService()
+chat_service = ChatService()
 
 
-@router.get("/search")
-def search(question: str):
+class ChatRequest(BaseModel):
+    question: str
 
-    return retrieval_service.search(question)
+
+@router.post("/chat")
+def chat(request: ChatRequest):
+
+    return chat_service.chat(request.question)

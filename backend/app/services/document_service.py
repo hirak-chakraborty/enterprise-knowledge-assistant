@@ -25,8 +25,7 @@ class DocumentService:
         # Step 4: Store in vector store
         document_name = os.path.basename(file_path)
         
-        self.vector_store_service.store
-        (document_name, chunks, embeddings)
+        self.vector_store_service.store(document_name, chunks, embeddings)
 
         return {
             "chunks": chunks,
