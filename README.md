@@ -51,6 +51,24 @@ Built with **FastAPI**, **ChromaDB**, **Sentence Transformers**, and **Qwen 3 (r
                   ▼
       Context-Aware Response
 ```
+
+## 🚀 Core Capabilities
+
+### 📄 Intelligent Document Processing
+Upload PDF documents and automatically extract, clean, and split content into meaningful chunks for efficient retrieval.
+
+### 🧠 Semantic Search
+Instead of keyword matching, the system converts both documents and user queries into vector embeddings, enabling context-aware semantic retrieval.
+
+### 🤖 Retrieval-Augmented Generation (RAG)
+Relevant document chunks are retrieved from ChromaDB and supplied to the language model, allowing answers to remain grounded in the uploaded knowledge base.
+
+### ⚡ Local AI Inference
+Uses **Qwen 3** running locally through **Ollama**, eliminating dependency on cloud-hosted LLM APIs while providing fast and private inference.
+
+### 🏗 Modular Service-Oriented Architecture
+The application separates document processing, embedding generation, retrieval, prompt construction, vector storage, and LLM interaction into independent services, making the project scalable and easy to maintain.
+
 ## Overview
 
 This project demonstrates how modern AI applications can help organizations search and interact with their internal knowledge base instead of manually browsing documents.
