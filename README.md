@@ -1,7 +1,21 @@
-# Enterprise Knowledge Assistant
+# 🧠 Enterprise Knowledge Assistant
 
-An AI-powered Enterprise Knowledge Assistant that enables users to retrieve information from documents using Retrieval-Augmented Generation (RAG) and natural language conversations.
+> An enterprise-grade Retrieval-Augmented Generation (RAG) application that enables users to search and interact with organizational knowledge using natural language.
 
+Built with **FastAPI**, **ChromaDB**, **Sentence Transformers**, and **Qwen 3 (running locally with Ollama)**, the application combines semantic search with modern Large Language Models to deliver grounded, context-aware responses from uploaded documents.
+
+---
+
+## ✨ Key Highlights
+
+- 📄 Upload and process PDF documents
+- 🧩 Intelligent document chunking
+- 🔍 Semantic search using vector embeddings
+- 🗂 ChromaDB vector database
+- 🤖 Local LLM inference with Qwen 3 via Ollama
+- 💬 Natural language question answering
+- 📚 Source-aware responses using RAG architecture
+- 🏗 Modular FastAPI backend with service-oriented design
 ## Overview
 
 This project demonstrates how modern AI applications can help organizations search and interact with their internal knowledge base instead of manually browsing documents.
