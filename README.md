@@ -16,6 +16,41 @@ Built with **FastAPI**, **ChromaDB**, **Sentence Transformers**, and **Qwen 3 (r
 - 💬 Natural language question answering
 - 📚 Source-aware responses using RAG architecture
 - 🏗 Modular FastAPI backend with service-oriented design
+
+## 🏗 Architecture
+
+```text
+                User
+                  │
+                  ▼
+          FastAPI REST API
+                  │
+                  ▼
+         PDF Upload & Parsing
+                  │
+                  ▼
+         Intelligent Chunking
+                  │
+                  ▼
+      Sentence Transformers
+           (Embeddings)
+                  │
+                  ▼
+             ChromaDB
+          Vector Database
+                  │
+                  ▼
+        Semantic Retrieval
+                  │
+                  ▼
+          Prompt Builder
+                  │
+                  ▼
+      Qwen 3 (via Ollama)
+                  │
+                  ▼
+      Context-Aware Response
+```
 ## Overview
 
 This project demonstrates how modern AI applications can help organizations search and interact with their internal knowledge base instead of manually browsing documents.
