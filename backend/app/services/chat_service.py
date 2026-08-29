@@ -1,3 +1,4 @@
+print("🔥 LOADED CHAT SERVICE FROM:", __file__)
 from backend.app.services.retrieval_service import RetrievalService
 from backend.app.services.prompt_service import PromptService
 from backend.app.services.llm_service import LLMService
@@ -66,6 +67,18 @@ class ChatService:
         # Keep only recent history
         self.conversation_service.trim_history(session_id)
 
+        sources = []
+
+        for metadata, document in zip(metadatas, documents):
+            sources.append({
+                "document": metadata.get("document"),
+                "chunk_number": metadata.get("chunk_number"),
+                "content": document
+            })
+
+        print("\n========== SOURCES DEBUG ==========")
+        print(sources)
+        print("===================================\n")
         return {
             "answer": answer,
             "sources": metadatas
