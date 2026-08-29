@@ -76,6 +76,12 @@ class VectorStoreService:
             include=["documents", "metadatas", "distances"]
         )
 
+        print("\n========== SEARCH RESULTS ==========")
+
+        for i, distance in enumerate(results["distances"][0]):
+            print(f"Rank {i + 1} | Distance = {distance}")
+
+        print("====================================")
         print("Search completed.")
         print("============================\n")
 

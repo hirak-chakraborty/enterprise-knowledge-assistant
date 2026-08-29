@@ -19,4 +19,16 @@ class RetrievalService:
             top_k
         )
 
+        distances = results.get("distances", [[]])[0]
+
+        print("\n========== RETRIEVAL SCORES ==========")
+
+        for index, distance in enumerate(distances, start=1):
+            print(
+                f"Rank {index} | "
+                f"Distance: {distance:.4f}"
+            )
+
+        print("======================================\n")
+
         return results
