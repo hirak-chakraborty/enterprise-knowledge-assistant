@@ -81,5 +81,5 @@ class ChatService:
         print("===================================\n")
         return {
             "answer": answer,
-            "sources": metadatas
+            "sources": sources
         }
