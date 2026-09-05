@@ -6,7 +6,7 @@ class ChunkService:
     def split(self, text: str):
 
         splitter = RecursiveCharacterTextSplitter(
-            chunk_size=800,
+            chunk_size=1200,
             chunk_overlap=150,
             separators=[
                 "\n\n",

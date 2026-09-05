@@ -63,7 +63,7 @@ class VectorStoreService:
         print(f"Collection contains {count} vectors.")
         print("==================================\n")
 
-    def search(self, embedding, top_k=5):
+    def search(self, embedding, top_k=3):
 
         print("\n========== SEARCH ==========")
 
