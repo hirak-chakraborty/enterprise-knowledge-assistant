@@ -2,7 +2,7 @@ from backend.app.services.embedding_service import EmbeddingService
 from backend.app.services.vector_store_service import VectorStoreService
 
 
-MAX_DISTANCE = 0.9
+MAX_DISTANCE = 0.7
 
 
 class RetrievalService:
@@ -10,7 +10,7 @@ class RetrievalService:
         self.embedding_service = EmbeddingService()
         self.vector_store = VectorStoreService()
 
-    def search(self, question: str, top_k: int = 3):
+    def search(self, question: str, top_k: int = 2):
         question_embedding = self.embedding_service.generate_embeddings(
             [question]
         )[0]

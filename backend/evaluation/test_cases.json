@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "What does an LLM do?",
+    "category": "direct",
+    "expected_topic": "LLM"
+  },
+  {
+    "id": 2,
+    "question": "What is cosine similarity?",
+    "category": "direct",
+    "expected_topic": "cosine similarity"
+  },
+  {
+    "id": 3,
+    "question": "Why are embeddings needed in RAG?",
+    "category": "direct",
+    "expected_topic": "embeddings"
+  },
+  {
+    "id": 4,
+    "question": "What is chunking and why is it needed?",
+    "category": "direct",
+    "expected_topic": "chunking"
+  },
+  {
+    "id": 5,
+    "question": "What is the difference between fine-tuning and RAG?",
+    "category": "direct",
+    "expected_topic": "fine-tuning vs RAG"
+  },
+  {
+    "id": 6,
+    "question": "What is the difference between an LLM and RAG?",
+    "category": "multi_chunk",
+    "expected_topic": "LLM vs RAG"
+  },
+  {
+    "id": 7,
+    "question": "Why do we need an LLM instead of just returning the retrieved chunks?",
+    "category": "multi_chunk",
+    "expected_topic": "LLM role in RAG"
+  },
+  {
+    "id": 8,
+    "question": "How does cosine similarity help determine which document is relevant?",
+    "category": "multi_chunk",
+    "expected_topic": "cosine similarity in retrieval"
+  },
+  {
+    "id": 9,
+    "question": "What is the difference between supervised and unsupervised learning?",
+    "category": "out_of_domain",
+    "expected_topic": null
+  },
+  {
+    "id": 10,
+    "question": "What is the capital of France?",
+    "category": "out_of_domain",
+    "expected_topic": null
+  }
+]
