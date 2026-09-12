@@ -154,24 +154,26 @@ The evaluator deliberately does **not** automatically decide whether a chunk is 
 
 ## 6. Evaluation Dataset
 
-Current baseline contains 10 cases:
+The baseline began with 10 cases. Grounding evaluation subsequently expanded the dataset to 16 cases.
 
-- 5 direct/in-document questions
-- 3 multi-chunk questions
-- 2 out-of-domain questions
+Current categories include:
 
-Representative tests include:
+- direct/in-document questions
+- multi-chunk questions
+- out-of-domain questions
+- grounding-supported questions
+- grounding-partial questions
+- grounding-insufficient questions
+- grounding-unsupported questions
+
+Representative grounding tests include:
 
 - What does an LLM do?
-- What is cosine similarity?
-- Why are embeddings needed in RAG?
-- What is chunking and why is it needed?
-- What is the difference between fine-tuning and RAG?
-- What is the difference between an LLM and RAG?
-- Why do we need an LLM instead of just returning the retrieved chunks?
 - How does cosine similarity help determine which document is relevant?
-- What is the difference between supervised and unsupervised learning?
-- What is the capital of France?
+- What are the advantages of using GPT-4 over Qwen 3?
+- Why does cosine similarity use the angle between vectors instead of their magnitude?
+- How does the Transformer attention mechanism improve RAG retrieval?
+- What happens if two documents have exactly the same cosine similarity to a query?
 
 ## 7. Baseline Findings
 
@@ -206,7 +208,7 @@ For `How does cosine similarity help determine which document is relevant?`:
 - rank 1: chunk 2, distance approximately `0.514`
 - rank 2: chunk 3, distance approximately `0.598`
 - retrieval found the correct cosine-similarity material
-- the source did not fully explain the complete document-ranking process, so the LLM filled in some conceptual detail
+- before the grounding prompt change, the source did not fully explain the complete document-ranking process, so the LLM filled in some conceptual detail
 
 ### Out-of-domain retrieval
 
@@ -221,7 +223,62 @@ retrieval returned an empty result set after the `0.7` distance threshold, and t
 
 This is a strong positive signal for the current threshold.
 
-## 8. Current Assessment
+## 8. Grounding Evaluation and Prompt Experiment
+
+A grounding-focused test set was added to determine whether the LLM stays within retrieved evidence or introduces plausible information from outside the context.
+
+### Initial grounding baseline
+
+Three initial cases showed:
+
+- Fully supported question: answered correctly and remained grounded.
+- Partially supported question: answer was conceptually reasonable but added information not explicitly stated in the retrieved chunks.
+- Unsupported question: correctly refused.
+
+A further stress test was then used to distinguish between related-but-insufficient evidence and fully unsupported questions.
+
+### Grounding failure discovered
+
+For `How does the Transformer attention mechanism improve RAG retrieval?`, retrieval returned chunks containing Transformer, attention, RAG, embeddings, and retrieval-related concepts. However, the retrieved evidence did not explicitly establish that Transformer attention improves RAG retrieval.
+
+Before the prompt change, the LLM nevertheless generated an explanation claiming that attention improves RAG retrieval. This was classified as an unsupported inference/hallucination.
+
+This demonstrated an important distinction:
+
+> Semantic similarity of retrieved chunks does not guarantee that the retrieved evidence is sufficient to answer the question.
+
+### Controlled prompt intervention
+
+Only the generation prompt was changed. Retrieval configuration, embeddings, chunking, `top_k`, distance threshold, and LLM configuration were kept unchanged.
+
+The generation instructions were strengthened to explicitly require:
+
+- answers strictly from the provided context
+- no outside knowledge or assumptions
+- no unstated relationships between separate facts
+- refusal when related context does not directly answer the question
+- refusal rather than inference when uncertain
+
+### Retest results
+
+Tests 11–16 were rerun after the prompt change:
+
+- `What does an LLM do?` → still answered correctly.
+- `How does cosine similarity help determine which document is relevant?` → became more conservative and refused rather than making an inference not directly supported by the chunks.
+- `What are the advantages of using GPT-4 over Qwen 3?` → correctly refused.
+- `Why does cosine similarity use the angle between vectors instead of their magnitude?` → correctly refused.
+- `How does the Transformer attention mechanism improve RAG retrieval?` → previous unsupported answer was replaced by the correct refusal.
+- `What happens if two documents have exactly the same cosine similarity to a query?` → correctly refused.
+
+### Decision
+
+> Keep the stricter grounding prompt for now.
+
+It successfully eliminated the observed unsupported inference in the key stress test while preserving correct behavior on clearly supported questions.
+
+However, the change may be somewhat conservative: the cosine-similarity test moved from a reasonable conceptual answer to a refusal. This should be evaluated later with additional clearly answerable and multi-chunk questions before further prompt tuning.
+
+## 9. Current Assessment
 
 The baseline has **not yet demonstrated a clear retrieval failure**.
 
@@ -231,11 +288,12 @@ Current observations:
 - top-2 has been sufficient for the tested examples
 - the `0.7` threshold successfully rejects tested out-of-domain questions
 - some retrieved second chunks are noisy, but this has not yet caused a major answer failure
-- generation sometimes adds reasonable conceptual inference beyond the exact wording of the retrieved chunks
+- generation previously added reasonable conceptual inference beyond the exact wording of retrieved chunks
+- the stricter grounding prompt now makes the generation layer more conservative and prevents the observed unsupported inference case
 
 Therefore, the project should not add reranking or increase `top_k` merely because those are common RAG techniques. Changes should be driven by evaluation evidence.
 
-## 9. Current Hypotheses
+## 10. Current Hypotheses
 
 ### Retrieval hypothesis
 
@@ -243,17 +301,21 @@ Current retrieval may already be adequate for straightforward questions. Harder 
 
 ### Generation/grounding hypothesis
 
-The next likely weakness is whether the LLM makes claims that are not directly supported by retrieved context, even when retrieval itself is correct.
+The LLM can be controlled more reliably by explicit grounding constraints, but overly strict instructions may reduce useful answers when the context supports an answer through straightforward synthesis. More evaluation is required before further tuning.
 
-## 10. Next Planned Work
+## 11. Next Planned Work
 
-1. Finish analyzing the 10-case retrieval baseline.
-2. Test grounding/generation behavior using the same stored retrieval evidence.
-3. Identify whether unsupported claims are a repeatable problem.
-4. Only then decide whether to improve prompting, context construction, answer validation, retrieval, or reranking.
-5. Keep the evaluation harness so every future RAG change can be compared against the same baseline.
+The grounding prompt change is considered a successful first intervention, but the project will temporarily move forward to other system capabilities rather than over-optimize this area immediately.
 
-## 11. Engineering Principle
+Planned future grounding work:
+
+1. Add more clearly answerable multi-chunk questions.
+2. Measure whether the stricter prompt causes unnecessary refusals.
+3. Revisit prompt/context construction only if evaluation shows a meaningful tradeoff.
+
+Other project work can proceed in parallel so that the system continues to grow while this question remains documented for later refinement.
+
+## 12. Engineering Principle
 
 The project follows an experiment-driven approach:
 
@@ -274,3 +336,5 @@ Retest against the baseline
 ```
 
 No optimization should be added without a demonstrated problem or a measurable hypothesis.
+
+The project also deliberately avoids treating AI agents as a black-box replacement for engineering. AI is used as an engineering partner, while architectural decisions, experiments, failure analysis, and implementation reasoning remain understandable and defensible by the project owner.
