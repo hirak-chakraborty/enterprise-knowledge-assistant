@@ -278,9 +278,46 @@ It successfully eliminated the observed unsupported inference in the key stress 
 
 However, the change may be somewhat conservative: the cosine-similarity test moved from a reasonable conceptual answer to a refusal. This should be evaluated later with additional clearly answerable and multi-chunk questions before further prompt tuning.
 
-## 9. Current Assessment
+## 9. Frontend Implementation
 
-The baseline has **not yet demonstrated a clear retrieval failure**.
+The first usable frontend was added as a small Vite + React single-page application. The frontend deliberately stays lightweight: no routing or global state library was introduced before the application needed them.
+
+Frontend responsibilities:
+
+- chat UI and message state
+- local conversation session ID
+- PDF upload
+- upload/indexing feedback
+- backend API calls
+- retrieved source display
+- loading and error states
+- responsive layout
+
+The frontend calls the existing backend contracts:
+
+- `POST /upload` with a PDF multipart form
+- `POST /chat` with `{ session_id, question }`
+
+The backend's existing `sources` response is rendered as expandable source cards so users can inspect the retrieved chunks behind an answer.
+
+Because the browser runs on a different local origin from FastAPI during development, CORS was enabled for the Vite development origins (`localhost:5173` and `127.0.0.1:5173`). No RAG/retrieval configuration was changed as part of this work.
+
+Frontend structure:
+
+```text
+frontend/
+├── index.html
+├── package.json
+└── src/
+    ├── App.jsx
+    ├── api.js
+    ├── main.jsx
+    └── styles.css
+```
+
+## 10. Current Assessment
+
+The backend baseline has **not yet demonstrated a clear retrieval failure**.
 
 Current observations:
 
@@ -291,9 +328,11 @@ Current observations:
 - generation previously added reasonable conceptual inference beyond the exact wording of retrieved chunks
 - the stricter grounding prompt now makes the generation layer more conservative and prevents the observed unsupported inference case
 
+The application now has a usable browser interface around this backend baseline. Retrieval and grounding optimization remain intentionally parked until broader evaluation provides evidence for another change.
+
 Therefore, the project should not add reranking or increase `top_k` merely because those are common RAG techniques. Changes should be driven by evaluation evidence.
 
-## 10. Current Hypotheses
+## 11. Current Hypotheses
 
 ### Retrieval hypothesis
 
@@ -303,7 +342,7 @@ Current retrieval may already be adequate for straightforward questions. Harder 
 
 The LLM can be controlled more reliably by explicit grounding constraints, but overly strict instructions may reduce useful answers when the context supports an answer through straightforward synthesis. More evaluation is required before further tuning.
 
-## 11. Next Planned Work
+## 12. Next Planned Work
 
 The grounding prompt change is considered a successful first intervention, but the project will temporarily move forward to other system capabilities rather than over-optimize this area immediately.
 
@@ -313,9 +352,9 @@ Planned future grounding work:
 2. Measure whether the stricter prompt causes unnecessary refusals.
 3. Revisit prompt/context construction only if evaluation shows a meaningful tradeoff.
 
-Other project work can proceed in parallel so that the system continues to grow while this question remains documented for later refinement.
+Next application-level work can build on the frontend by improving the document lifecycle and knowledge-base management: document listing, deletion, duplicate/version handling, processing status, and richer metadata. After that, frontend navigation can expose those capabilities.
 
-## 12. Engineering Principle
+## 13. Engineering Principle
 
 The project follows an experiment-driven approach:
 
