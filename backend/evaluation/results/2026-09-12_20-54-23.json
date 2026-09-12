@@ -1,0 +1,379 @@
+{
+  "timestamp": "2026-09-12T20:54:23.799334+05:30",
+  "configuration": {
+    "top_k": 2,
+    "max_distance": 0.7,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "llm_model": "qwen3:8b"
+  },
+  "tests": [
+    {
+      "id": 1,
+      "question": "What does an LLM do?",
+      "category": "direct",
+      "expected_topic": "LLM",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.5154876708984375,
+            "chunk_number": 9,
+            "document": "Resume Review Feedback.pdf",
+            "text": "From now on, I'll behave exactly like a senior interviewer.\nTopic 1: LLM Fundamentals (Most Important)\nQuestion 1\nYou said in the interview:\nNow I ask:\nWhat exactly does an LLM do?\nDon't explain RAG.\nDon't explain embeddings.\nOnly explain what an LLM is and what its job is.\nAnswer as if you're sitting in front of the interviewer.\nTake your time. I won't interrupt.\n\"LLM forms the answer.\"\nLlm connects with the user with a simple language, forms \nthe answer in a natural language processing method and \ngives it back so that user can easily understand it.\nGood attempt. You're improving, but this answer would still lose marks.\nScore: 5/10\nWhat you said\nThat's more about the user experience than what an LLM actually is.\nInterview Answer (8-9/10)\n\"LLM connects with the user with a simple language...\""
+          },
+          {
+            "rank": 2,
+            "distance": 0.5743503570556641,
+            "chunk_number": 10,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Notice how this answer:\nDefines what it is\nExplains how it works (next-token prediction)\nExplains its role in your project\nIf the interviewer asks:\nWhat would you answer?\nThink about your KT Assistant. Don't worry if it's not perfect. This is exactly the kind of\nfollow-up that TCS and Infosys interviewers ask.\n\"An LLM (Large Language Model) is a deep learning model, based on the Transformer\narchitecture, that is trained on a large amount of text data. Its primary job is to\nunderstand the input context and generate human-like text by predicting the next most\nprobable token. In a RAG application, the LLM uses the retrieved context to generate a\nrelevant and natural language response.\"\nWhy do we need an LLM? Why can't we just return the retrieved chunks?"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "An LLM (Large Language Model) is a deep learning model based on the Transformer architecture, trained on vast text data. Its primary function is to understand input context and generate human-like text by predicting the next most probable token, enabling natural language responses tailored to user queries."
+      }
+    },
+    {
+      "id": 2,
+      "question": "What is cosine similarity?",
+      "category": "direct",
+      "expected_topic": "cosine similarity",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.5105975866317749,
+            "chunk_number": 2,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Good question. If you have less than 1 hour, don't study everything. Focus on the highest\nROI topics.\n🔥 1. APIs (5 mins)\nDifference between:\n\n\nGET\nRetrieve data\nPOST\nCreate data\nPUT\nUpdate entire resource\nPATCH\nPartial update\nDELETE\nDelete resource\nREST API\nJSON\n🔥 2. Embeddings (2 mins)\nInterview Answer:\n🔥 3. Cosine Similarity (2 mins)\nVery common.\nWhy?\nA way for applications to communicate over HTTP.\n{\n  \"name\":\"Hirak\",\n  \"age\":28\n}\nEmbeddings convert text into numerical vectors so semantically similar texts are placed\nclose together in vector space.\nCosine similarity measures how similar two vectors are based on the angle between\nthem.\nJSON"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "Cosine similarity measures how similar two vectors are based on the angle between them in vector space."
+      }
+    },
+    {
+      "id": 3,
+      "question": "Why are embeddings needed in RAG?",
+      "category": "direct",
+      "expected_topic": "embeddings",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.5530048608779907,
+            "chunk_number": 2,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Good question. If you have less than 1 hour, don't study everything. Focus on the highest\nROI topics.\n🔥 1. APIs (5 mins)\nDifference between:\n\n\nGET\nRetrieve data\nPOST\nCreate data\nPUT\nUpdate entire resource\nPATCH\nPartial update\nDELETE\nDelete resource\nREST API\nJSON\n🔥 2. Embeddings (2 mins)\nInterview Answer:\n🔥 3. Cosine Similarity (2 mins)\nVery common.\nWhy?\nA way for applications to communicate over HTTP.\n{\n  \"name\":\"Hirak\",\n  \"age\":28\n}\nEmbeddings convert text into numerical vectors so semantically similar texts are placed\nclose together in vector space.\nCosine similarity measures how similar two vectors are based on the angle between\nthem.\nJSON"
+          },
+          {
+            "rank": 2,
+            "distance": 0.6083967685699463,
+            "chunk_number": 4,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Encoder\nT5\nEncoder + Decoder\n🔥 11. Fine-tuning vs RAG\nFine-tuning\nChanges model weights\nTeaches new behaviour\nRAG\nDoesn't change model\nRetrieves external knowledge\n🔥 12. Agentic AI\nChatbot\nAnswers questions\nAgent\nCan\nThink\nPlan\nCall APIs\nUse tools\nExecute workflows\n🔥 13. Why AI instead of Python Automation?\nThis was asked in your interview.\nGood answer:\n\"If the workflow is rule-based and deterministic, Python automation is sufficient. We use\nGenAI when the task requires understanding natural language, reasoning over\nunstructured documents, summarization, or conversational interaction.\"\n\n\nThis answer is much stronger than saying \"AI was decided by the team.\"\n🔥 14. Testing\nYou mentioned testing.\nRemember these:\nFunctional Testing\nPrompt Testing\nRetrieval Validation\nHallucination Testing\nUser Acceptance Testing (UAT)\n🔥 15. Python Functions\nKnow:\nDifference\nreturn\nReturns value\nprint\nOnly displays value\n⭐⭐⭐ Most Likely TCS Questions\nBased on your previous interviews, I would bet on these:\n1. Tell me about yourself.\n2. Explain your KT Assistant.\n3. Explain RAG.\n4. Why embeddings?\n5. Why vector database?\ndef add(a,b):\n    return a+b\nPython\nRun"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "Embeddings are needed in RAG (Retrieval-Augmented Generation) to convert text into numerical vectors, allowing semantically similar texts to be placed close together in vector space. This enables efficient retrieval of relevant documents by comparing vectors using methods like cosine similarity, which is critical for matching user queries with appropriate external knowledge."
+      }
+    },
+    {
+      "id": 4,
+      "question": "What is chunking and why is it needed?",
+      "category": "direct",
+      "expected_topic": "chunking",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.49188554286956787,
+            "chunk_number": 3,
+            "document": "Resume Review Feedback.pdf",
+            "text": "🔥 4. Chunking (2 mins)\nWhy chunk?\nWhy 1000-1500 characters?\n🔥 5. Why Markdown?\nIf they ask:\nAnswer:\n🔥 6. Vector Database\nExamples\nPinecone\nChromaDB\nFAISS\nMilvus\nWeaviate\nDon't say GPT.\n🔥 7. Prompt Types\nKnow these names.\nSystem Prompt\nHigher cosine similarity means more semantic similarity.\nLLMs cannot process huge documents efficiently. Chunking divides documents into\nsmaller meaningful pieces for better retrieval.\nBalance between context and retrieval accuracy.\nWhy convert PDF to Markdown?\nMarkdown preserves headings, lists, tables and document structure better than plain\ntext, improving chunk quality and retrieval.\n\n\nUser Prompt\nAssistant Prompt\nFew-shot Prompt\nZero-shot Prompt\n🔥 8. Transformer\nIf asked:\nSay:\nDon't go deeper unless asked.\n🔥 9. GPT\nGPT = Generative Pre-trained Transformer\nGPT is\n✅ Decoder-only model\nWhy?\n🔥 10. Encoder vs Decoder\nEncoder\nUnderstands input\nDecoder\nGenerates output\nGPT\nDecoder\nBERT\nWhat is Transformer?\nTransformer is the deep learning architecture used by modern LLMs. It uses the\nattention mechanism to understand relationships between words in parallel.\nBecause it predicts the next token."
+          }
+        ]
+      },
+      "generation": {
+        "answer": "Chunking is the process of dividing large documents into smaller, manageable pieces (1000-1500 characters) to improve retrieval efficiency for LLMs. It is needed because large documents are difficult for LLMs to process effectively, and chunking balances context retention with retrieval accuracy."
+      }
+    },
+    {
+      "id": 5,
+      "question": "What is the difference between fine-tuning and RAG?",
+      "category": "direct",
+      "expected_topic": "fine-tuning vs RAG",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.6473957300186157,
+            "chunk_number": 4,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Encoder\nT5\nEncoder + Decoder\n🔥 11. Fine-tuning vs RAG\nFine-tuning\nChanges model weights\nTeaches new behaviour\nRAG\nDoesn't change model\nRetrieves external knowledge\n🔥 12. Agentic AI\nChatbot\nAnswers questions\nAgent\nCan\nThink\nPlan\nCall APIs\nUse tools\nExecute workflows\n🔥 13. Why AI instead of Python Automation?\nThis was asked in your interview.\nGood answer:\n\"If the workflow is rule-based and deterministic, Python automation is sufficient. We use\nGenAI when the task requires understanding natural language, reasoning over\nunstructured documents, summarization, or conversational interaction.\"\n\n\nThis answer is much stronger than saying \"AI was decided by the team.\"\n🔥 14. Testing\nYou mentioned testing.\nRemember these:\nFunctional Testing\nPrompt Testing\nRetrieval Validation\nHallucination Testing\nUser Acceptance Testing (UAT)\n🔥 15. Python Functions\nKnow:\nDifference\nreturn\nReturns value\nprint\nOnly displays value\n⭐⭐⭐ Most Likely TCS Questions\nBased on your previous interviews, I would bet on these:\n1. Tell me about yourself.\n2. Explain your KT Assistant.\n3. Explain RAG.\n4. Why embeddings?\n5. Why vector database?\ndef add(a,b):\n    return a+b\nPython\nRun"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "Fine-tuning modifies the model's weights to teach new behaviors, while RAG (Retrieval-Augmented Generation) retrieves external knowledge without altering the model's parameters."
+      }
+    },
+    {
+      "id": 6,
+      "question": "What is the difference between an LLM and RAG?",
+      "category": "multi_chunk",
+      "expected_topic": "LLM vs RAG",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.5297223329544067,
+            "chunk_number": 9,
+            "document": "Resume Review Feedback.pdf",
+            "text": "From now on, I'll behave exactly like a senior interviewer.\nTopic 1: LLM Fundamentals (Most Important)\nQuestion 1\nYou said in the interview:\nNow I ask:\nWhat exactly does an LLM do?\nDon't explain RAG.\nDon't explain embeddings.\nOnly explain what an LLM is and what its job is.\nAnswer as if you're sitting in front of the interviewer.\nTake your time. I won't interrupt.\n\"LLM forms the answer.\"\nLlm connects with the user with a simple language, forms \nthe answer in a natural language processing method and \ngives it back so that user can easily understand it.\nGood attempt. You're improving, but this answer would still lose marks.\nScore: 5/10\nWhat you said\nThat's more about the user experience than what an LLM actually is.\nInterview Answer (8-9/10)\n\"LLM connects with the user with a simple language...\""
+          },
+          {
+            "rank": 2,
+            "distance": 0.5885935425758362,
+            "chunk_number": 10,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Notice how this answer:\nDefines what it is\nExplains how it works (next-token prediction)\nExplains its role in your project\nIf the interviewer asks:\nWhat would you answer?\nThink about your KT Assistant. Don't worry if it's not perfect. This is exactly the kind of\nfollow-up that TCS and Infosys interviewers ask.\n\"An LLM (Large Language Model) is a deep learning model, based on the Transformer\narchitecture, that is trained on a large amount of text data. Its primary job is to\nunderstand the input context and generate human-like text by predicting the next most\nprobable token. In a RAG application, the LLM uses the retrieved context to generate a\nrelevant and natural language response.\"\nWhy do we need an LLM? Why can't we just return the retrieved chunks?"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "The difference between an LLM and RAG is that an LLM (Large Language Model) is the core model that generates human-like text by predicting the next most probable token based on input context. RAG (Retrieval-Augmented Generation) is a methodology that combines retrieving relevant information from external sources with the LLM's ability to generate coherent, natural language responses. The LLM handles the generation, while RAG integrates retrieval to enhance the answer's accuracy and relevance."
+      }
+    },
+    {
+      "id": 7,
+      "question": "Why do we need an LLM instead of just returning the retrieved chunks?",
+      "category": "multi_chunk",
+      "expected_topic": "LLM role in RAG",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.4994053840637207,
+            "chunk_number": 10,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Notice how this answer:\nDefines what it is\nExplains how it works (next-token prediction)\nExplains its role in your project\nIf the interviewer asks:\nWhat would you answer?\nThink about your KT Assistant. Don't worry if it's not perfect. This is exactly the kind of\nfollow-up that TCS and Infosys interviewers ask.\n\"An LLM (Large Language Model) is a deep learning model, based on the Transformer\narchitecture, that is trained on a large amount of text data. Its primary job is to\nunderstand the input context and generate human-like text by predicting the next most\nprobable token. In a RAG application, the LLM uses the retrieved context to generate a\nrelevant and natural language response.\"\nWhy do we need an LLM? Why can't we just return the retrieved chunks?"
+          },
+          {
+            "rank": 2,
+            "distance": 0.6086821556091309,
+            "chunk_number": 3,
+            "document": "Resume Review Feedback.pdf",
+            "text": "🔥 4. Chunking (2 mins)\nWhy chunk?\nWhy 1000-1500 characters?\n🔥 5. Why Markdown?\nIf they ask:\nAnswer:\n🔥 6. Vector Database\nExamples\nPinecone\nChromaDB\nFAISS\nMilvus\nWeaviate\nDon't say GPT.\n🔥 7. Prompt Types\nKnow these names.\nSystem Prompt\nHigher cosine similarity means more semantic similarity.\nLLMs cannot process huge documents efficiently. Chunking divides documents into\nsmaller meaningful pieces for better retrieval.\nBalance between context and retrieval accuracy.\nWhy convert PDF to Markdown?\nMarkdown preserves headings, lists, tables and document structure better than plain\ntext, improving chunk quality and retrieval.\n\n\nUser Prompt\nAssistant Prompt\nFew-shot Prompt\nZero-shot Prompt\n🔥 8. Transformer\nIf asked:\nSay:\nDon't go deeper unless asked.\n🔥 9. GPT\nGPT = Generative Pre-trained Transformer\nGPT is\n✅ Decoder-only model\nWhy?\n🔥 10. Encoder vs Decoder\nEncoder\nUnderstands input\nDecoder\nGenerates output\nGPT\nDecoder\nBERT\nWhat is Transformer?\nTransformer is the deep learning architecture used by modern LLMs. It uses the\nattention mechanism to understand relationships between words in parallel.\nBecause it predicts the next token."
+          }
+        ]
+      },
+      "generation": {
+        "answer": "We need an LLM to generate a **relevant and natural language response** using the retrieved chunks. Retrieved chunks alone may lack coherence or context, and an LLM processes them to produce a smooth, human-like answer. Additionally, LLMs handle the complexity of understanding and synthesizing information from chunked data, ensuring the output is both accurate and contextually appropriate."
+      }
+    },
+    {
+      "id": 8,
+      "question": "How does cosine similarity help determine which document is relevant?",
+      "category": "multi_chunk",
+      "expected_topic": "cosine similarity in retrieval",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.5137184858322144,
+            "chunk_number": 2,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Good question. If you have less than 1 hour, don't study everything. Focus on the highest\nROI topics.\n🔥 1. APIs (5 mins)\nDifference between:\n\n\nGET\nRetrieve data\nPOST\nCreate data\nPUT\nUpdate entire resource\nPATCH\nPartial update\nDELETE\nDelete resource\nREST API\nJSON\n🔥 2. Embeddings (2 mins)\nInterview Answer:\n🔥 3. Cosine Similarity (2 mins)\nVery common.\nWhy?\nA way for applications to communicate over HTTP.\n{\n  \"name\":\"Hirak\",\n  \"age\":28\n}\nEmbeddings convert text into numerical vectors so semantically similar texts are placed\nclose together in vector space.\nCosine similarity measures how similar two vectors are based on the angle between\nthem.\nJSON"
+          },
+          {
+            "rank": 2,
+            "distance": 0.5981452465057373,
+            "chunk_number": 3,
+            "document": "Resume Review Feedback.pdf",
+            "text": "🔥 4. Chunking (2 mins)\nWhy chunk?\nWhy 1000-1500 characters?\n🔥 5. Why Markdown?\nIf they ask:\nAnswer:\n🔥 6. Vector Database\nExamples\nPinecone\nChromaDB\nFAISS\nMilvus\nWeaviate\nDon't say GPT.\n🔥 7. Prompt Types\nKnow these names.\nSystem Prompt\nHigher cosine similarity means more semantic similarity.\nLLMs cannot process huge documents efficiently. Chunking divides documents into\nsmaller meaningful pieces for better retrieval.\nBalance between context and retrieval accuracy.\nWhy convert PDF to Markdown?\nMarkdown preserves headings, lists, tables and document structure better than plain\ntext, improving chunk quality and retrieval.\n\n\nUser Prompt\nAssistant Prompt\nFew-shot Prompt\nZero-shot Prompt\n🔥 8. Transformer\nIf asked:\nSay:\nDon't go deeper unless asked.\n🔥 9. GPT\nGPT = Generative Pre-trained Transformer\nGPT is\n✅ Decoder-only model\nWhy?\n🔥 10. Encoder vs Decoder\nEncoder\nUnderstands input\nDecoder\nGenerates output\nGPT\nDecoder\nBERT\nWhat is Transformer?\nTransformer is the deep learning architecture used by modern LLMs. It uses the\nattention mechanism to understand relationships between words in parallel.\nBecause it predicts the next token."
+          }
+        ]
+      },
+      "generation": {
+        "answer": "Cosine similarity helps determine document relevance by measuring the angle between vectors representing documents in a vector space. Higher cosine similarity (closer to 1) indicates that documents are more semantically similar, as their vectors are closer together. This is particularly useful when comparing documents converted into numerical vectors via embeddings, where semantic similarity directly correlates with relevance."
+      }
+    },
+    {
+      "id": 9,
+      "question": "What is the difference between supervised and unsupervised learning?",
+      "category": "out_of_domain",
+      "expected_topic": null,
+      "retrieval": {
+        "top_k": 2,
+        "results": []
+      },
+      "generation": {
+        "answer": "I couldn't find that information in the provided documents."
+      }
+    },
+    {
+      "id": 10,
+      "question": "What is the capital of France?",
+      "category": "out_of_domain",
+      "expected_topic": null,
+      "retrieval": {
+        "top_k": 2,
+        "results": []
+      },
+      "generation": {
+        "answer": "I couldn't find that information in the provided documents."
+      }
+    },
+    {
+      "id": 11,
+      "question": "What does an LLM do?",
+      "category": "grounding_supported",
+      "expected_topic": "LLM",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.5154876708984375,
+            "chunk_number": 9,
+            "document": "Resume Review Feedback.pdf",
+            "text": "From now on, I'll behave exactly like a senior interviewer.\nTopic 1: LLM Fundamentals (Most Important)\nQuestion 1\nYou said in the interview:\nNow I ask:\nWhat exactly does an LLM do?\nDon't explain RAG.\nDon't explain embeddings.\nOnly explain what an LLM is and what its job is.\nAnswer as if you're sitting in front of the interviewer.\nTake your time. I won't interrupt.\n\"LLM forms the answer.\"\nLlm connects with the user with a simple language, forms \nthe answer in a natural language processing method and \ngives it back so that user can easily understand it.\nGood attempt. You're improving, but this answer would still lose marks.\nScore: 5/10\nWhat you said\nThat's more about the user experience than what an LLM actually is.\nInterview Answer (8-9/10)\n\"LLM connects with the user with a simple language...\""
+          },
+          {
+            "rank": 2,
+            "distance": 0.5743503570556641,
+            "chunk_number": 10,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Notice how this answer:\nDefines what it is\nExplains how it works (next-token prediction)\nExplains its role in your project\nIf the interviewer asks:\nWhat would you answer?\nThink about your KT Assistant. Don't worry if it's not perfect. This is exactly the kind of\nfollow-up that TCS and Infosys interviewers ask.\n\"An LLM (Large Language Model) is a deep learning model, based on the Transformer\narchitecture, that is trained on a large amount of text data. Its primary job is to\nunderstand the input context and generate human-like text by predicting the next most\nprobable token. In a RAG application, the LLM uses the retrieved context to generate a\nrelevant and natural language response.\"\nWhy do we need an LLM? Why can't we just return the retrieved chunks?"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "An LLM (Large Language Model) is a deep learning model based on the Transformer architecture, trained on vast text data. Its primary function is to understand input context and generate human-like text by predicting the next most probable token. It processes and produces natural language responses to fulfill user queries."
+      }
+    },
+    {
+      "id": 12,
+      "question": "How does cosine similarity help determine which document is relevant?",
+      "category": "grounding_partial",
+      "expected_topic": "cosine similarity in retrieval",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.5137184858322144,
+            "chunk_number": 2,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Good question. If you have less than 1 hour, don't study everything. Focus on the highest\nROI topics.\n🔥 1. APIs (5 mins)\nDifference between:\n\n\nGET\nRetrieve data\nPOST\nCreate data\nPUT\nUpdate entire resource\nPATCH\nPartial update\nDELETE\nDelete resource\nREST API\nJSON\n🔥 2. Embeddings (2 mins)\nInterview Answer:\n🔥 3. Cosine Similarity (2 mins)\nVery common.\nWhy?\nA way for applications to communicate over HTTP.\n{\n  \"name\":\"Hirak\",\n  \"age\":28\n}\nEmbeddings convert text into numerical vectors so semantically similar texts are placed\nclose together in vector space.\nCosine similarity measures how similar two vectors are based on the angle between\nthem.\nJSON"
+          },
+          {
+            "rank": 2,
+            "distance": 0.5981452465057373,
+            "chunk_number": 3,
+            "document": "Resume Review Feedback.pdf",
+            "text": "🔥 4. Chunking (2 mins)\nWhy chunk?\nWhy 1000-1500 characters?\n🔥 5. Why Markdown?\nIf they ask:\nAnswer:\n🔥 6. Vector Database\nExamples\nPinecone\nChromaDB\nFAISS\nMilvus\nWeaviate\nDon't say GPT.\n🔥 7. Prompt Types\nKnow these names.\nSystem Prompt\nHigher cosine similarity means more semantic similarity.\nLLMs cannot process huge documents efficiently. Chunking divides documents into\nsmaller meaningful pieces for better retrieval.\nBalance between context and retrieval accuracy.\nWhy convert PDF to Markdown?\nMarkdown preserves headings, lists, tables and document structure better than plain\ntext, improving chunk quality and retrieval.\n\n\nUser Prompt\nAssistant Prompt\nFew-shot Prompt\nZero-shot Prompt\n🔥 8. Transformer\nIf asked:\nSay:\nDon't go deeper unless asked.\n🔥 9. GPT\nGPT = Generative Pre-trained Transformer\nGPT is\n✅ Decoder-only model\nWhy?\n🔥 10. Encoder vs Decoder\nEncoder\nUnderstands input\nDecoder\nGenerates output\nGPT\nDecoder\nBERT\nWhat is Transformer?\nTransformer is the deep learning architecture used by modern LLMs. It uses the\nattention mechanism to understand relationships between words in parallel.\nBecause it predicts the next token."
+          }
+        ]
+      },
+      "generation": {
+        "answer": "Cosine similarity helps determine document relevance by measuring the angle between vectors representing documents in a high-dimensional space. Higher cosine similarity (closer to 1) indicates greater semantic similarity, meaning documents are more relevant to each other. This is critical for tasks like retrieval, where matching documents to queries relies on proximity in vector space."
+      }
+    },
+    {
+      "id": 13,
+      "question": "What are the advantages of using GPT-4 over Qwen 3?",
+      "category": "grounding_unsupported",
+      "expected_topic": null,
+      "retrieval": {
+        "top_k": 2,
+        "results": []
+      },
+      "generation": {
+        "answer": "I couldn't find that information in the provided documents."
+      }
+    },
+    {
+      "id": 14,
+      "question": "Why does cosine similarity use the angle between vectors instead of their magnitude?",
+      "category": "grounding_insufficient",
+      "expected_topic": "cosine similarity",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.6142006516456604,
+            "chunk_number": 2,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Good question. If you have less than 1 hour, don't study everything. Focus on the highest\nROI topics.\n🔥 1. APIs (5 mins)\nDifference between:\n\n\nGET\nRetrieve data\nPOST\nCreate data\nPUT\nUpdate entire resource\nPATCH\nPartial update\nDELETE\nDelete resource\nREST API\nJSON\n🔥 2. Embeddings (2 mins)\nInterview Answer:\n🔥 3. Cosine Similarity (2 mins)\nVery common.\nWhy?\nA way for applications to communicate over HTTP.\n{\n  \"name\":\"Hirak\",\n  \"age\":28\n}\nEmbeddings convert text into numerical vectors so semantically similar texts are placed\nclose together in vector space.\nCosine similarity measures how similar two vectors are based on the angle between\nthem.\nJSON"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "I couldn't find that information in the provided documents."
+      }
+    },
+    {
+      "id": 15,
+      "question": "How does the Transformer attention mechanism improve RAG retrieval?",
+      "category": "grounding_insufficient",
+      "expected_topic": "Transformer attention and RAG retrieval",
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.6178414821624756,
+            "chunk_number": 3,
+            "document": "Resume Review Feedback.pdf",
+            "text": "🔥 4. Chunking (2 mins)\nWhy chunk?\nWhy 1000-1500 characters?\n🔥 5. Why Markdown?\nIf they ask:\nAnswer:\n🔥 6. Vector Database\nExamples\nPinecone\nChromaDB\nFAISS\nMilvus\nWeaviate\nDon't say GPT.\n🔥 7. Prompt Types\nKnow these names.\nSystem Prompt\nHigher cosine similarity means more semantic similarity.\nLLMs cannot process huge documents efficiently. Chunking divides documents into\nsmaller meaningful pieces for better retrieval.\nBalance between context and retrieval accuracy.\nWhy convert PDF to Markdown?\nMarkdown preserves headings, lists, tables and document structure better than plain\ntext, improving chunk quality and retrieval.\n\n\nUser Prompt\nAssistant Prompt\nFew-shot Prompt\nZero-shot Prompt\n🔥 8. Transformer\nIf asked:\nSay:\nDon't go deeper unless asked.\n🔥 9. GPT\nGPT = Generative Pre-trained Transformer\nGPT is\n✅ Decoder-only model\nWhy?\n🔥 10. Encoder vs Decoder\nEncoder\nUnderstands input\nDecoder\nGenerates output\nGPT\nDecoder\nBERT\nWhat is Transformer?\nTransformer is the deep learning architecture used by modern LLMs. It uses the\nattention mechanism to understand relationships between words in parallel.\nBecause it predicts the next token."
+          },
+          {
+            "rank": 2,
+            "distance": 0.6664416790008545,
+            "chunk_number": 4,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Encoder\nT5\nEncoder + Decoder\n🔥 11. Fine-tuning vs RAG\nFine-tuning\nChanges model weights\nTeaches new behaviour\nRAG\nDoesn't change model\nRetrieves external knowledge\n🔥 12. Agentic AI\nChatbot\nAnswers questions\nAgent\nCan\nThink\nPlan\nCall APIs\nUse tools\nExecute workflows\n🔥 13. Why AI instead of Python Automation?\nThis was asked in your interview.\nGood answer:\n\"If the workflow is rule-based and deterministic, Python automation is sufficient. We use\nGenAI when the task requires understanding natural language, reasoning over\nunstructured documents, summarization, or conversational interaction.\"\n\n\nThis answer is much stronger than saying \"AI was decided by the team.\"\n🔥 14. Testing\nYou mentioned testing.\nRemember these:\nFunctional Testing\nPrompt Testing\nRetrieval Validation\nHallucination Testing\nUser Acceptance Testing (UAT)\n🔥 15. Python Functions\nKnow:\nDifference\nreturn\nReturns value\nprint\nOnly displays value\n⭐⭐⭐ Most Likely TCS Questions\nBased on your previous interviews, I would bet on these:\n1. Tell me about yourself.\n2. Explain your KT Assistant.\n3. Explain RAG.\n4. Why embeddings?\n5. Why vector database?\ndef add(a,b):\n    return a+b\nPython\nRun"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "The Transformer's attention mechanism improves RAG retrieval by enabling the model to focus on relevant parts of the input (e.g., queries and documents) when generating outputs. This allows for better alignment between the query and retrieved documents, enhancing semantic understanding and precision. By weighting relationships between words in parallel, attention helps prioritize meaningful connections in embeddings, which are critical for accurate retrieval in RAG systems."
+      }
+    },
+    {
+      "id": 16,
+      "question": "What happens if two documents have exactly the same cosine similarity to a query?",
+      "category": "grounding_unsupported",
+      "expected_topic": null,
+      "retrieval": {
+        "top_k": 2,
+        "results": [
+          {
+            "rank": 1,
+            "distance": 0.618121325969696,
+            "chunk_number": 2,
+            "document": "Resume Review Feedback.pdf",
+            "text": "Good question. If you have less than 1 hour, don't study everything. Focus on the highest\nROI topics.\n🔥 1. APIs (5 mins)\nDifference between:\n\n\nGET\nRetrieve data\nPOST\nCreate data\nPUT\nUpdate entire resource\nPATCH\nPartial update\nDELETE\nDelete resource\nREST API\nJSON\n🔥 2. Embeddings (2 mins)\nInterview Answer:\n🔥 3. Cosine Similarity (2 mins)\nVery common.\nWhy?\nA way for applications to communicate over HTTP.\n{\n  \"name\":\"Hirak\",\n  \"age\":28\n}\nEmbeddings convert text into numerical vectors so semantically similar texts are placed\nclose together in vector space.\nCosine similarity measures how similar two vectors are based on the angle between\nthem.\nJSON"
+          }
+        ]
+      },
+      "generation": {
+        "answer": "I couldn't find that information in the provided documents."
+      }
+    }
+  ]
+}

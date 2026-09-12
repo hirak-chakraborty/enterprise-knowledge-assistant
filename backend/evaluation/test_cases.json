@@ -58,5 +58,42 @@
     "question": "What is the capital of France?",
     "category": "out_of_domain",
     "expected_topic": null
+  },
+
+  {
+  "id": 11,
+  "question": "What does an LLM do?",
+  "category": "grounding_supported",
+  "expected_topic": "LLM"
+  },
+  {
+  "id": 12,
+  "question": "How does cosine similarity help determine which document is relevant?",
+  "category": "grounding_partial",
+  "expected_topic": "cosine similarity in retrieval"
+  },
+  {
+  "id": 13,
+  "question": "What are the advantages of using GPT-4 over Qwen 3?",
+  "category": "grounding_unsupported",
+  "expected_topic": null
+  },
+  {
+    "id": 14,
+    "question": "Why does cosine similarity use the angle between vectors instead of their magnitude?",
+    "category": "grounding_insufficient",
+    "expected_topic": "cosine similarity"
+  },
+  {
+    "id": 15,
+    "question": "How does the Transformer attention mechanism improve RAG retrieval?",
+    "category": "grounding_insufficient",
+    "expected_topic": "Transformer attention and RAG retrieval"
+  },
+  {
+    "id": 16,
+    "question": "What happens if two documents have exactly the same cosine similarity to a query?",
+    "category": "grounding_unsupported",
+    "expected_topic": null
   }
 ]
