@@ -36,6 +36,10 @@ class QueryRewriterService:
                     "4. Preserve the original meaning.\n"
                     "5. If the question is already standalone, "
                     "return it unchanged."
+                    "6. If the question contains pronouns or references such as 'it', 'they','that', 'this', or 'the above', resolve them using the conversation history.\n"
+                    "7. The rewritten question must be understandable without the conversation history."
+                    "8. If the question is already standalone, return the original question unchanged. Do not paraphrase or expand it."
+                    "9. Output exactly ONE question/query and nothing else."
                 )
             }
         ]
